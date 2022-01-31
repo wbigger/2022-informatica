@@ -1,9 +1,14 @@
 var app = {
     init: function () {
-        // Use origin and pathname to force to use https and avoid mixed content
+        // Find the path to query (avoid strict-origin-when-cross-origin)
         let origin = window.location.origin;
         let pathname = window.location.pathname;
-        $.getJSON(`${origin}${pathname}?users.json`)
+        // Remove index.php from pathname
+        pathname = pathname.substring(0, pathname.lastIndexOf("/"));
+        // DEV ONLY: use mockups API
+        pathname = pathname.concat("/mock");
+        console.log("Pathname: "+pathname);
+        $.getJSON(`${origin}${pathname}/users.json`)
             .done(app.writeUsers)
             .fail(app.onFail);
     },
