@@ -54,4 +54,10 @@ class Home extends \Core\Controller
         View::renderTemplate('Home/users_js.html');
     }
 
+    // TODO Check HTTP method
+    // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //     echo "Stai usando il metodo post";
+    // } else {
+    // }
+    
 }
